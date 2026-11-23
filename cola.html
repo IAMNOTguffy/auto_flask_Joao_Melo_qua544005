@@ -1,0 +1,343 @@
+TRES LINGUAGENS
+HTML: estrutura da página. É como se fosse o esqueleto de uma casa.
+
+Bootstrap: ajuda a deixar a página bonita e organizada, sem precisar escrever tanto CSS.
+
+Flask: framework Python que permite criar aplicações web e conectar a página com o código Python.
+
+
+
+
+
+
+<label for="gasolina" class="form-label">Gasolina:</label> 
+<input type="number" class="form-control" placeholder="RS 0,00" step="0.01" min="0" required>
+
+Form label é usado para definir o lugar junto com um input logo em baixo
+form-control é usado para construir a categoria junto com o label
+
+
+<!doctype html>
+
+<!--
+  DOCTYPE informa ao navegador que estamos usando HTML5.
+  HTML5 é a versão moderna do HTML.
+-->
+
+<html lang="pt-br">
+
+<!--
+  A tag html envolve TODO o conteúdo da página.
+  lang="pt-br" informa que o idioma da página é português do Brasil.
+-->
+
+<head>
+
+    <!--
+      A tag head contém configurações da página.
+      Essas informações normalmente não aparecem diretamente no conteúdo visual.
+    -->
+
+    <meta charset="utf-8">
+
+    <!--
+      charset="utf-8" permite utilizar acentos e caracteres especiais.
+      Exemplo: ç, ã, é, ô.
+    -->
+
+    <meta name="author" content="Alex Machado">
+
+    <!--
+      Informa quem é o autor da página.
+      Nesse caso, Alex Machado.
+    -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--
+      Faz a página se adaptar ao tamanho da tela.
+      Isso é muito importante para celulares e tablets.
+
+      width=device-width:
+      A largura da página acompanha a largura do dispositivo.
+
+      initial-scale=1:
+      Define o zoom inicial como 100%.
+    -->
+
+    <title>AUTO FLASK</title>
+
+    <!--
+      Define o título que aparece na aba do navegador.
+    -->
+
+    <!-- BOOTSTRAP -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    >
+
+    <!--
+      Aqui estamos conectando o Bootstrap ao nosso HTML.
+
+      Bootstrap é uma biblioteca de CSS.
+      Ele oferece classes prontas para estilizar elementos.
+
+      Por exemplo:
+      class="btn btn-primary"
+
+      Cria um botão azul sem precisarmos escrever todo o CSS.
+    -->
+
+    <!-- FAVICON -->
+
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='img/icone.png') }}"
+      type="image/png"
+    >
+
+    <!--
+      Favicon é aquele pequeno ícone que aparece na aba do navegador.
+
+      href indica onde está a imagem.
+
+      {{ url_for('static', filename='img/icone.png') }}
+
+      Essa parte é do Flask, não é HTML puro.
+
+      url_for() é uma função do Flask que gera o endereço
+      correto de um arquivo dentro da pasta static.
+
+      Por exemplo, o Flask procura:
+      static/img/icone.png
+    -->
+
+</head>
+
+<body>
+
+    <!--
+      A tag body contém tudo aquilo que aparece visualmente
+      na página: imagens, textos, formulários, botões etc.
+    -->
+
+    <main class="container vh-100 d-flex flex-column align-items-center justify-content-center">
+
+        <!--
+          main representa o conteúdo principal da página.
+
+          Vamos entender as classes do Bootstrap:
+
+          container:
+          Cria uma área centralizada e organizada.
+
+          vh-100:
+          Faz o elemento ocupar 100% da altura da tela.
+
+          d-flex:
+          Ativa o sistema Flexbox, que ajuda a organizar os elementos.
+
+          flex-column:
+          Organiza os elementos um abaixo do outro.
+
+          align-items-center:
+          Centraliza os elementos horizontalmente.
+
+          justify-content-center:
+          Centraliza os elementos verticalmente.
+        -->
+
+        <div class="row">
+
+            <!--
+              row significa linha.
+
+              No sistema de grades do Bootstrap,
+              usamos row para organizar colunas.
+            -->
+
+            <figure class="d-flex justify-content-center mb-5">
+
+                <!--
+                  figure é uma tag usada para agrupar conteúdo visual,
+                  como imagens e suas legendas.
+
+                  d-flex:
+                  Ativa o Flexbox.
+
+                  justify-content-center:
+                  Centraliza a imagem horizontalmente.
+
+                  mb-5:
+                  Adiciona uma margem inferior.
+
+                  mb significa margin-bottom.
+                -->
+
+                <img
+                  src="{{ url_for('static', filename='img/icone.png') }}"
+                  alt="Logo do AUTO FLASK"
+                >
+
+                <!--
+                  img é a tag responsável por mostrar uma imagem.
+
+                  src:
+                  Indica o caminho da imagem.
+
+                  alt:
+                  Descreve a imagem.
+                  Ajuda pessoas que utilizam leitores de tela
+                  e também aparece quando a imagem não carrega.
+                -->
+
+            </figure>
+
+            <div class="d-flex justify-content-center mb-5">
+
+                <!--
+                  d-flex:
+                  Ativa o Flexbox.
+
+                  justify-content-center:
+                  Centraliza o conteúdo horizontalmente.
+
+                  mb-5:
+                  Cria um espaço abaixo do título.
+                -->
+
+                <h1>AUTO FLASK</h1>
+
+                <!--
+                  h1 representa o título principal da página.
+
+                  Normalmente usamos h1 para o título mais importante.
+                -->
+
+            </div>
+
+            <form action="" method="POST">
+
+                <!--
+                  form representa um formulário.
+
+                  É onde o usuário poderá digitar informações.
+
+                  action="":
+                  Indica para onde os dados serão enviados.
+                  Vazio significa que o formulário será enviado
+                  para a própria rota atual.
+
+                  method="POST":
+                  Envia os dados no corpo da requisição HTTP.
+
+                  POST é muito utilizado para enviar informações
+                  digitadas pelo usuário.
+                -->
+
+                <div class="col-12 mt-5">
+
+                    <!--
+                      col-12:
+                      Faz a coluna ocupar as 12 partes disponíveis
+                      na grade do Bootstrap (largura total).
+
+                      mt-5:
+                      Adiciona margem superior.
+
+                      mt significa margin-top.
+                    -->
+
+                    <label for="gasolina" class="form-label">
+
+                        Gasolina:
+
+                    </label>
+
+                    <!--
+                      label é o texto que identifica um campo do formulário.
+
+                      for="gasolina":
+                      Conecta esse texto ao input que possui
+                      id="gasolina".
+
+                      form-label:
+                      Classe do Bootstrap que estiliza o label.
+                    -->
+
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="gasolina"
+                      name="gasolina"
+                      placeholder="R$ 0,00"
+                      step="0.01"
+                      min="0"
+                      required
+                    >
+
+                    <!--
+                      input cria um campo onde o usuário pode digitar.
+
+                      type="number":
+                      Permite inserir valores numéricos.
+
+                      class="form-control":
+                      Aplica o estilo padrão de campo do Bootstrap.
+
+                      id="gasolina":
+                      Identifica esse campo dentro do HTML.
+                      Também permite conectá-lo ao label.
+
+                      name="gasolina":
+                      Nome usado para enviar o valor ao Flask.
+                      É MUITO IMPORTANTE para receber os dados no Python.
+
+                      placeholder="R$ 0,00":
+                      Mostra um exemplo dentro do campo antes
+                      de o usuário digitar.
+
+                      step="0.01":
+                      Permite valores com duas casas decimais.
+                      Exemplo: 5.89.
+
+                      min="0":
+                      Impede valores menores que zero na validação
+                      do navegador.
+
+                      required:
+                      Torna o preenchimento obrigatório.
+                    -->
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <!--
+      Aqui termina o conteúdo principal da página.
+    -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <!--
+      Conecta o JavaScript do Bootstrap.
+
+      Ele permite utilizar recursos interativos do Bootstrap,
+      como menus, modais e dropdowns.
+    -->
+
+</body>
+
+</html>
+
+<!--
+  Aqui termina todo o documento HTML.
+-->
